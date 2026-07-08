@@ -1,4 +1,3 @@
-"""SQLModel table models for the Composition Workspace & Coordination Console."""
 from datetime import datetime
 from enum import Enum
 from typing import Optional
