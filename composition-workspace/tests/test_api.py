@@ -1,4 +1,3 @@
-"""Pytest suite for the Composition Workspace & Coordination Console API."""
 import os
 import sys
 
