@@ -1,4 +1,4 @@
-// Composition Workspace & Coordination Console — frontend logic
+
 const API = "";
 
 const state = {
@@ -8,7 +8,6 @@ const state = {
   tasks: [],
 };
 
-// ---------- Bootstrapping: ensure we have a "current user" ----------
 async function bootstrapUser() {
   let userId = localStorage.getItem("cwcc_user_id");
   if (userId) {
@@ -49,7 +48,6 @@ function timeAgo(iso) {
   return `${Math.floor(diff / 86400)}d ago`;
 }
 
-// ---------- Mode switching ----------
 function switchMode(mode) {
   document.querySelectorAll(".mode-btn").forEach((b) => {
     b.classList.toggle("active", b.dataset.mode === mode);
@@ -64,7 +62,6 @@ document.querySelectorAll(".mode-btn").forEach((btn) => {
   btn.addEventListener("click", () => switchMode(btn.dataset.mode));
 });
 
-// ================= WORKSPACE =================
 async function loadDocuments() {
   const statusFilter = document.getElementById("statusFilter").value;
   const qs = statusFilter ? `?status=${statusFilter}` : "";
@@ -214,7 +211,6 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-// ================= CONSOLE =================
 async function loadConsole() {
   await Promise.all([loadDashboardSummary(), loadTasks(), populateTaskDocumentSelect()]);
 }
@@ -323,7 +319,7 @@ document.getElementById("taskCancelBtn").addEventListener("click", () => {
   document.getElementById("taskModal").hidden = true;
 });
 
-// Browse & upload a file to create a linked document on the fly
+
 document.getElementById("taskFileInput").addEventListener("change", async (e) => {
   const file = e.target.files[0];
   const statusEl = document.getElementById("taskFileStatus");
