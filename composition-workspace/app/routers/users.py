@@ -1,6 +1,4 @@
-"""User management endpoints."""
 from typing import List
-
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 
