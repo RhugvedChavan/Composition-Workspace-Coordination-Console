@@ -1,4 +1,3 @@
-"""Coordination Console endpoints: task assignment & tracking."""
 from datetime import datetime
 from typing import List, Optional
 
