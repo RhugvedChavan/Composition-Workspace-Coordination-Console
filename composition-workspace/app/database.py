@@ -1,6 +1,4 @@
-"""Database engine and session management."""
 from sqlmodel import SQLModel, Session, create_engine
-
 DATABASE_URL = "sqlite:///./composition_workspace.db"
 
 connect_args = {"check_same_thread": False}
