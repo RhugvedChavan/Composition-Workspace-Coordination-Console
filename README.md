@@ -48,7 +48,9 @@ The Composition Workspace & Coordination Console provides an effective solution 
 # How to run :-
 
 Step 1 - 
+
 Install Dependencies - pip install -r requirements.txt
 
 Step 2 - 
+
 Start the Server - uvicorn app.main:app --reload --port 8000
