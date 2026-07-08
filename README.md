@@ -1,4 +1,4 @@
-# Composition-Workspace-Coordination-Console :-
+# Composition-Workspace-And-Coordination-Console :-
 
 
 The Composition Workspace & Coordination Console is a web-based document management and collaboration system designed to simplify content creation and project coordination. It allows users to create, edit, version, and review documents while managing tasks through a centralized coordination dashboard. The system combines document version control, commenting, workflow management, and task tracking into a single platform, improving collaboration and productivity for teams.
