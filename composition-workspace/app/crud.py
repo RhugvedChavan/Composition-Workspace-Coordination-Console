@@ -1,4 +1,3 @@
-"""CRUD helper functions shared by routers."""
 from datetime import datetime
 from typing import Optional
 
