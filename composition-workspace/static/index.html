@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Composition Workspace &amp; Coordination Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">§</span>
+    <span class="brand-text">Composition Workspace <span class="brand-sep">/</span> Coordination Console</span>
+  </div>
+  <div class="mode-switch" id="modeSwitch" role="tablist">
+    <button class="mode-btn active" data-mode="workspace" role="tab" aria-selected="true">Workspace</button>
+    <span class="switch-lever" id="switchLever"></span>
+    <button class="mode-btn" data-mode="console" role="tab" aria-selected="false">Console</button>
+  </div>
+</header>
+
+<main id="app">
+
+  <!-- ===================== WORKSPACE VIEW ===================== -->
+  <section id="view-workspace" class="view active">
+    <aside class="doc-list-panel">
+      <div class="panel-head">
+        <h2>Manuscripts</h2>
+        <button id="newDocBtn" class="btn-ghost" title="New document">+ New</button>
+      </div>
+      <div class="doc-filter">
+        <select id="statusFilter">
+          <option value="">All statuses</option>
+          <option value="draft">Draft</option>
+          <option value="in_review">In review</option>
+          <option value="approved">Approved</option>
+          <option value="published">Published</option>
+        </select>
+      </div>
+      <ul id="docList" class="doc-list"></ul>
+    </aside>
+
+    <section class="editor-panel">
+      <div id="editorEmpty" class="editor-empty">
+        <p>Select a manuscript from the list, or start a new one.</p>
+      </div>
+
+      <div id="editorFull" class="editor-full" hidden>
+        <div class="editor-toolbar">
+          <input id="docTitle" class="doc-title-input" placeholder="Untitled composition" />
+          <select id="docStatus" class="status-select"></select>
+          <span class="version-tag" id="versionTag"></span>
+          <button id="saveDocBtn" class="btn-primary">Save</button>
+          <button id="deleteDocBtn" class="btn-danger">Delete</button>
+        </div>
+        <textarea id="docContent" class="doc-content" placeholder="Begin composing..."></textarea>
+
+        <div class="editor-lower">
+          <div class="versions-block">
+            <h3>Version history</h3>
+            <ul id="versionList" class="version-list"></ul>
+          </div>
+          <div class="comments-block">
+            <h3>Comments</h3>
+            <ul id="commentList" class="comment-list"></ul>
+            <form id="commentForm" class="comment-form">
+              <input id="commentInput" placeholder="Leave a note for collaborators..." />
+              <button class="btn-ghost" type="submit">Add</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ===================== CONSOLE VIEW ===================== -->
+  <section id="view-console" class="view">
+    <div class="console-grid">
+
+      <div class="console-stats-wrap">
+        <div class="panel-head">
+          <h2>Dashboard</h2>
+          <button id="newTaskBtnDashboard" class="btn-ghost">+ Task</button>
+        </div>
+        <div class="console-stats" id="consoleStats"></div>
+      </div>
+
+      <div class="console-board">
+        <div class="panel-head">
+          <h2>Coordination board</h2>
+          <button id="newTaskBtn" class="btn-ghost">+ Task</button>
+        </div>
+        <div class="board-columns" id="boardColumns">
+          <div class="board-col" data-status="todo"><h4>To do</h4><ul class="board-list" id="col-todo"></ul></div>
+          <div class="board-col" data-status="in_progress"><h4>In progress</h4><ul class="board-list" id="col-in_progress"></ul></div>
+          <div class="board-col" data-status="done"><h4>Done</h4><ul class="board-list" id="col-done"></ul></div>
+        </div>
+      </div>
+
+      <div class="console-activity">
+        <h2>Activity feed</h2>
+        <ul id="activityFeed" class="activity-feed"></ul>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== MODALS ===================== -->
+<div id="taskModal" class="modal" hidden>
+  <div class="modal-box">
+    <h3>New task</h3>
+    <form id="taskForm">
+      <label>Title<input id="taskTitle" required /></label>
+      <label>Description<textarea id="taskDescription" rows="3"></textarea></label>
+      <label>Link to document
+        <select id="taskDocument"><option value="">— none —</option></select>
+      </label>
+      <label>Or attach a new file
+        <input id="taskFileInput" type="file" accept=".txt,.md,.text" />
+        <span id="taskFileStatus" class="file-status"></span>
+      </label>
+      <label>Due date<input id="taskDueDate" type="date" /></label>
+      <div class="modal-actions">
+        <button type="button" class="btn-ghost" id="taskCancelBtn">Cancel</button>
+        <button type="submit" class="btn-primary">Create task</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
