@@ -1,4 +1,3 @@
-"""Coordination Console dashboard: aggregated stats & activity feed."""
 from datetime import datetime
 from typing import List
 
